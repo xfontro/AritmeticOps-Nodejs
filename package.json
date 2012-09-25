@@ -30,9 +30,8 @@
   "bundleDependencies": [],
   
   "scripts": {  
-     "start": "node index.js"
+     "start": "node ./index.js"
   },
   
-  "private": true,
-  "main": "index.js"
+  "private": true
 }
