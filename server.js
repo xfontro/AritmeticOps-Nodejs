@@ -5,7 +5,6 @@ var http 	= require("http"),
 	url 	= require("url"),
 	qs 		= require("querystring"),
 	fs      = require('fs'),
-	express = require('express'),
 	router 	= require("./router"),
 	operacionsAritmetiques = require("./operacionsAritmetiques"),
 	handle 	= {};
@@ -14,6 +13,9 @@ handle["/sumar"] = operacionsAritmetiques.sumar;
 handle["/restar"] = operacionsAritmetiques.restar;
 handle["/multiplicar"] = operacionsAritmetiques.multiplicar;
 handle["/dividir"] = operacionsAritmetiques.dividir;
+
+var ipaddr  = process.env.OPENSHIFT_INTERNAL_IP || "127.0.0.1";
+var port    = process.env.OPENSHIFT_INTERNAL_PORT || "8080";
 
 start(router.route, handle);
 
@@ -47,8 +49,7 @@ app.get('/asciimo', function(req, res){
 
 
 //  Get the environment variables we need.
-var ipaddr  = process.env.OPENSHIFT_INTERNAL_IP || "127.0.0.1";
-var port    = process.env.OPENSHIFT_INTERNAL_PORT || "8080";
+
 
 /*if (typeof ipaddr === "undefined") {
    console.warn('No OPENSHIFT_INTERNAL_IP environment variable');
@@ -108,14 +109,15 @@ function start(route, handle) {
 		    		});
 		} 
 	}
+	http.createServer(onRequest).listen(port,ipaddr);
+	console.log("server has started at: "+ipaddr+":"+port);
 
 
 	//console.log("Server has started at: localhost:5858");
 }
 
 //exports.start = start;
-http.createServer(onRequest);
-http.listen(port, ipaddr);
+
 
 //  Process on exit and signals.
 /*process.on('exit', function() { terminator(); });
