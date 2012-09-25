@@ -33,6 +33,6 @@
      "start": "node ./index.js"
   },
   
-  "private": true,
+  "private": true
 
 }
