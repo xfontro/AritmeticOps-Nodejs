@@ -18,8 +18,8 @@ handle["/dividir"] = operacionsAritmetiques.dividir;
 start(router.route, handle);
 
 //  Local cache for static content [fixed and loaded at startup]
-var zcache = { 'index.html': '' };
-zcache['index.html'] = fs.readFileSync('./index.html'); //  Cache index.html
+//var zcache = { 'index.html': '' };
+//zcache['index.html'] = fs.readFileSync('./index.html'); //  Cache index.html
 
 // Create "express" server.
 //var app  = express.createServer();
@@ -47,10 +47,10 @@ app.get('/asciimo', function(req, res){
 
 
 //  Get the environment variables we need.
-var ipaddr  = process.env.OPENSHIFT_INTERNAL_IP;
-var port    = process.env.OPENSHIFT_INTERNAL_PORT || 8080;
+var ipaddr  = process.env.OPENSHIFT_INTERNAL_IP || "127.0.0.1";
+var port    = process.env.OPENSHIFT_INTERNAL_PORT || "8080";
 
-if (typeof ipaddr === "undefined") {
+/*if (typeof ipaddr === "undefined") {
    console.warn('No OPENSHIFT_INTERNAL_IP environment variable');
 }
 
@@ -62,7 +62,7 @@ function terminator(sig) {
       process.exit(1);
    }
    console.log('%s: Node server stopped.', Date(Date.now()) );
-}
+}*/
 
 function start(route, handle) {
 	function onRequest(request, response) {
@@ -109,25 +109,23 @@ function start(route, handle) {
 		} 
 	}
 
-	http.createServer(onRequest);
-	http.listen(port, ipaddr, function() {
-		   console.log('%s: Node server started on %s:%d ...', Date(Date.now() ),
-		               ipaddr, port);
-		});
+
 	//console.log("Server has started at: localhost:5858");
 }
 
-exports.start = start;
+//exports.start = start;
+http.createServer(onRequest);
+http.listen(port, ipaddr);
 
 //  Process on exit and signals.
-process.on('exit', function() { terminator(); });
+/*process.on('exit', function() { terminator(); });
 
 // Removed 'SIGPIPE' from the list - bugz 852598.
 ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT', 'SIGBUS',
  'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'
 ].forEach(function(element, index, array) {
     process.on(element, function() { terminator(element); });
-});
+});*/
 
 //  And start the app on that interface (and port).
 /*http.listen(port, ipaddr, function() {
