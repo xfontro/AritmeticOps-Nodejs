@@ -115,7 +115,7 @@ function start(route, handle) {
 	//console.log("Server has started at: localhost:5858");
 }
 
-//exports.start = start;
+exports.start = start;
 
 
 //  Process on exit and signals.
