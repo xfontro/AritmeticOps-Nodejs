@@ -28,7 +28,11 @@
   },
   "devDependencies": {},
   "bundleDependencies": [],
-
+  
+  "scripts": {  
+     "start": "node index.js"
+  },
+  
   "private": true,
-  "main": "server.js"
+  "main": "index.js"
 }

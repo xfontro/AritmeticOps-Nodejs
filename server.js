@@ -41,9 +41,9 @@ app.get('/asciimo', function(req, res){
 });*/
 
 // Handler for GET /
-app.get('/', function(req, res){
+/*app.get('/', function(req, res){
     res.send(zcache['index.html'], {'Content-Type': 'text/html'});
-});
+});*/
 
 
 //  Get the environment variables we need.
@@ -110,6 +110,10 @@ function start(route, handle) {
 	}
 
 	http.createServer(onRequest);
+	http.listen(port, ipaddr, function() {
+		   console.log('%s: Node server started on %s:%d ...', Date(Date.now() ),
+		               ipaddr, port);
+		});
 	//console.log("Server has started at: localhost:5858");
 }
 
@@ -126,7 +130,7 @@ process.on('exit', function() { terminator(); });
 });
 
 //  And start the app on that interface (and port).
-http.listen(port, ipaddr, function() {
+/*http.listen(port, ipaddr, function() {
    console.log('%s: Node server started on %s:%d ...', Date(Date.now() ),
                ipaddr, port);
-});
+});*/
