@@ -1,23 +1,22 @@
-#!/bin/env node
-//  OpenShift sample Node application
+// #!/bin/env node
+// OpenShift sample Node application
 
 var http 	= require("http"),
 	url 	= require("url"),
-	qs 		= require("querystring"),
-	fs      = require('fs'),
-	router 	= require("./router"),
+	qs 		= require("querystring");
+/*	router 	= require("./router"),
 	operacionsAritmetiques = require("./operacionsAritmetiques"),
-	handle 	= {};
+	handle 	= {};*/
 
-handle["/sumar"] = operacionsAritmetiques.sumar;
+/*handle["/sumar"] = operacionsAritmetiques.sumar;
 handle["/restar"] = operacionsAritmetiques.restar;
 handle["/multiplicar"] = operacionsAritmetiques.multiplicar;
-handle["/dividir"] = operacionsAritmetiques.dividir;
+handle["/dividir"] = operacionsAritmetiques.dividir;*/
 
 var ipaddr  = process.env.OPENSHIFT_INTERNAL_IP || "127.0.0.1";
 var port    = process.env.OPENSHIFT_INTERNAL_PORT || "8080";
 
-start(router.route, handle);
+//start(router.route, handle);
 
 //  Local cache for static content [fixed and loaded at startup]
 //var zcache = { 'index.html': '' };
