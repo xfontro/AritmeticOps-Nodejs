@@ -1,4 +1,4 @@
-
+#!/bin/env node
 
 var server = require("./server"),
 	router = require("./router"),
