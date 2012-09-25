@@ -109,8 +109,8 @@ function start(route, handle) {
 		} 
 	}
 
-	http.createServer(onRequest).listen(5858, "localhost");
-	console.log("Server has started at: localhost:5858");
+	http.createServer(onRequest);
+	//console.log("Server has started at: localhost:5858");
 }
 
 exports.start = start;
@@ -126,7 +126,7 @@ process.on('exit', function() { terminator(); });
 });
 
 //  And start the app on that interface (and port).
-app.listen(port, ipaddr, function() {
+http.listen(port, ipaddr, function() {
    console.log('%s: Node server started on %s:%d ...', Date(Date.now() ),
                ipaddr, port);
 });
