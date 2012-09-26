@@ -1,7 +1,7 @@
 function route(handle, operation, a, b, resultat, err) {
 	if (typeof handle[operation] === 'function') {
 		
-		var routing = handle[operation](
+		/*var routing = */handle[operation](
 							a,
 							b,
 							function(res){
@@ -15,6 +15,7 @@ function route(handle, operation, a, b, resultat, err) {
 									};
 									err(error);
 								} else{
+									console.log("The result is: "+res);
 									resultat({"resultat" : res});
 								}
 							}
@@ -31,9 +32,9 @@ function route(handle, operation, a, b, resultat, err) {
 		
 	}
 		
-		routing.on('error', function(e){
+		/*routing.on('error', function(e){
 			console.log("Routing Caught the error: " + e);
-		});
+		});*/
 }
 
 exports.route = route;
