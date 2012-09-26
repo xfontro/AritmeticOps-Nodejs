@@ -1,39 +1,34 @@
-function route(handle, operation, a, b, responseGetter) {
+function route(handle, operation, a, b, resultat, err) {
 	if (typeof handle[operation] === 'function') {
-		var resultat = 0; 
+		
 		handle[operation](
 							a,
 							b,
 							function(res){
-								resultat = res;
+								if(isNaN(res)){
+									var error = {
+											errorCode: 400,
+											errorContent: {
+															'Content-Type' : 'text/html'
+											},
+											errorDescription: '400 Bad Request'
+									};
+									err(error);
+								} else{
+									resultat({"resultat" : res});
+								}
 							}
 				);
-		var head = {
-					code: 200,
-					content: {}
-		};
-		
-		responseGetter(head,{"resultat": resultat});
-	    
-		/*response.write(
-	    	JSON.stringify({ 
-					"resultat": resultat 
-				}));
-	    response.end();*/
-	    
 	} else {
-		console.log('No request handler found for ' + operation);
-		var head = {
-					code: 404,
-					content: {
+		var error = {
+					errorCode: 404,
+					errorContent: {
 									'Content-Type' : 'text/html'
-					}
+					},
+					errorDescription: '404 Not foud'	
 		};
-		responseGetter(head,'404 Not found');
+		err(error);
 		
-		/*response.writeHead(404, {'Content-Type': 'text/html'});
-		response.write('404 Not found');
-		response.end();*/
 	}
 }
 
