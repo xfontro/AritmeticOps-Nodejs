@@ -1,5 +1,6 @@
 var sumar = function (a, b, res){
 	var result = a+b;
+	console.log("Vull sumar "+a+" i "+b+".");
 	res(result);
 };
 
