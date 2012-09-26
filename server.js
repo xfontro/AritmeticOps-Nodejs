@@ -23,9 +23,10 @@ function start(route, handle) {
 						function(){
 							var dataObj = JSON.parse(data);
 							
+							console.log("Segons el servidor: Vull sumar "+op1+" i "+op2);
 							op1 = parseInt(dataObj.op1);
 							op2 = parseInt(dataObj.op2);
-							console.log("Request for " + pathname + " received.");
+							console.log("Request for " + pathname + " received. With operands "+op1+" and "+op2);
 						});
 			
 		} else if(request.method === 'GET'){
