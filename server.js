@@ -52,21 +52,21 @@ function start(route, handle) {
 	    			response.end();
 	    		});
 		
-		request.on('error', function(e){
+		/*request.on('error', function(e){
 			console.log("Request Caught the error: "+e);
 		});
 		
 		response.on('error', function(e){
 			console.log("Response Caught the error: "+e);
-		});
+		});*/
 	}
 	
-	var servidor = http.createServer(onRequest).listen(port,ipaddr);
+	/*var servidor = */http.createServer(onRequest).listen(port,ipaddr);
 	console.log("server has started at: "+ipaddr+":"+port);
 	
-	servidor.on('error', function(e){
+	/*servidor.on('error', function(e){
 		console.log("Server Caught the error: "+e);
-	});
+	});*/
 }
 
 exports.start = start;
