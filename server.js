@@ -25,7 +25,7 @@ function start(route, handle) {
 							
 							op1 = parseInt(dataObj.op1);
 							op2 = parseInt(dataObj.op2);
-							//console.log("Request for " + pathname + " received.");
+							console.log("Request for " + pathname + " received.");
 						});
 			
 		} else if(request.method === 'GET'){
@@ -33,7 +33,7 @@ function start(route, handle) {
 			
 			op1 = parseInt(qs.parse(parsedUrl.query).op1);
 			op2 = parseInt(qs.parse(parsedUrl.query).op2);
-			//console.log("Request for " + parsedUrl.pathname + " received.");	
+			console.log("Request for " + parsedUrl.pathname + " received.");	
 		}
 		
 		route(
@@ -52,12 +52,21 @@ function start(route, handle) {
 	    			response.end();
 	    		});
 		
-		request.on("error",function(){
-			console.log("Unhandled error!");
+		request.on('error', function(e){
+			console.log("Request Caught the error: "+e);
+		});
+		
+		response.on('error', function(e){
+			console.log("Response Caught the error: "+e);
 		});
 	}
-	http.createServer(onRequest).listen(port,ipaddr);
+	
+	var servidor = http.createServer(onRequest).listen(port,ipaddr);
 	console.log("server has started at: "+ipaddr+":"+port);
+	
+	servidor.on('error', function(e){
+		console.log("Server Caught the error: "+e);
+	});
 }
 
 exports.start = start;

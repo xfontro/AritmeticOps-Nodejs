@@ -1,11 +1,11 @@
 function route(handle, operation, a, b, resultat, err) {
-	if (typeof handle[operation] === 'function') {
+	//if (typeof handle[operation] === 'function') {
 		
-		handle[operation](
+		var routing = handle[operation](
 							a,
 							b,
 							function(res){
-								if(isNaN(res)){
+								/*if(isNaN(res)){
 									var error = {
 											errorCode: 400,
 											errorContent: {
@@ -14,12 +14,12 @@ function route(handle, operation, a, b, resultat, err) {
 											errorDescription: '400 Bad Request'
 									};
 									err(error);
-								} else{
+								} else{*/
 									resultat({"resultat" : res});
-								}
+								//}
 							}
 				);
-	} else {
+	/*} else {
 		var error = {
 					errorCode: 404,
 					errorContent: {
@@ -29,7 +29,11 @@ function route(handle, operation, a, b, resultat, err) {
 		};
 		err(error);
 		
-	}
+	}*/
+		
+		routing.on('error', function(e){
+			console.log("Routing Caught the error: " + e);
+		});
 }
 
 exports.route = route;
