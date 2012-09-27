@@ -20,7 +20,14 @@ var dividir = function (a, b, res){
 
 var checkNumbersAndRespond = function (result, res){
 	if(isNaN(result)){
-		res(new Error("Not a number!"));
+		var error = {
+				errorCode: 400,
+				errorContent: {
+								'Content-Type' : 'text/html'
+				},
+				errorDescription: '400 Bad Request'
+		};
+		res(error);
 	} else{
 		res(null, result);
 	}

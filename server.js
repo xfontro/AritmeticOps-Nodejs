@@ -29,15 +29,16 @@ function start(route, handle) {
 						    		pathname, 
 						    		op1,
 						    		op2,
-						    		function(resultat){
-						    			response.writeHead(200, {});
-						    			response.write(JSON.stringify(resultat));
-					    			    response.end();
-						    		},
-						    		function(err){
-						    			response.writeHead(err.errorCode, err.errorContent);
-						    			response.write(JSON.stringify(err.errorDescription));
-						    			response.end();
+						    		function(error, resultat){
+						    			if(error){
+							    			response.writeHead(error.errorCode, error.errorContent);
+							    			response.write(JSON.stringify(error.errorDescription));
+							    			response.end();
+						    			}else {
+						    				response.writeHead(200, {});
+							    			response.write(JSON.stringify(resultat));
+						    			    response.end();
+						    			}
 						    		});
 						});
 			
@@ -53,22 +54,23 @@ function start(route, handle) {
 		    		pathname, 
 		    		op1,
 		    		op2,
-		    		function(resultat){
-		    			response.writeHead(200, {});
-		    			response.write(JSON.stringify(resultat));
-	    			    response.end();
-		    		},
-		    		function(err){
-		    			response.writeHead(err.errorCode, err.errorContent);
-		    			response.write(JSON.stringify(err.errorDescription));
-		    			response.end();
+		    		function(error, resultat){
+		    			if(error){
+			    			response.writeHead(error.errorCode, error.errorContent);
+			    			response.write(JSON.stringify(error.errorDescription));
+			    			response.end();
+		    			}else {
+		    				response.writeHead(200, {});
+			    			response.write(JSON.stringify(resultat));
+		    			    response.end();
+		    			}
 		    		});
 		}
 
 	}
 	
 	http.createServer(onRequest).listen(port,ipaddr);
-	console.log("Server has started at: "+ipaddr+":"+port);
+	//console.log("Server has started at: "+ipaddr+":"+port);
 	
 }
 

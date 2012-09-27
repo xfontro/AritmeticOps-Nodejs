@@ -1,4 +1,4 @@
-function route(handle, operation, a, b, resultat, err) {
+function route(handle, operation, a, b, resultat) {
 	if (typeof handle[operation] === 'function') {
 		
 		handle[operation](
@@ -6,17 +6,10 @@ function route(handle, operation, a, b, resultat, err) {
 							b,
 							function(error, res){
 								if(error){
-									var error = {
-											errorCode: 400,
-											errorContent: {
-															'Content-Type' : 'text/html'
-											},
-											errorDescription: '400 Bad Request'
-									};
-									err(error);
+									resultat(error);
 								} else{
 									//console.log("The result is: "+res);
-									resultat({"resultat" : res});
+									resultat(null ,{"resultat" : res});
 								}
 							}
 				);
@@ -28,8 +21,7 @@ function route(handle, operation, a, b, resultat, err) {
 					},
 					errorDescription: '404 Not foud'	
 		};
-		err(error);
-		
+		resultat(error);
 	}
 }
 
