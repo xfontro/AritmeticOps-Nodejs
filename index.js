@@ -1,5 +1,3 @@
-require('nodetime').profile({debug: true});
-
 var server = require("./server"),
 	router = require("./router"),
 	operacionsAritmetiques = require("./operacionsAritmetiques"),
