@@ -15,7 +15,7 @@ function route(handle, operation, a, b, resultat, err) {
 									};
 									err(error);
 								} else{
-									console.log("The result is: "+res);
+									//console.log("The result is: "+res);
 									resultat({"resultat" : res});
 								}
 							}

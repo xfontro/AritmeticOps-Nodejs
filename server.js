@@ -23,7 +23,7 @@ function start(route, handle) {
 							
 							var op1 = parseInt(dataObj.op1);
 							var op2 = parseInt(dataObj.op2);
-							console.log("Request for " + pathname + " received. With operands "+op1+" and "+op2);
+							//console.log("Request for " + pathname + " received. With operands "+op1+" and "+op2);
 							
 							route(
 						    		handle,
@@ -47,7 +47,7 @@ function start(route, handle) {
 			
 			var op1 = parseInt(qs.parse(parsedUrl.query).op1);
 			var op2 = parseInt(qs.parse(parsedUrl.query).op2);
-			console.log("Request for " + parsedUrl.pathname + " received.");
+			//console.log("Request for " + parsedUrl.pathname + " received.");
 			
 			route(
 		    		handle,
@@ -77,7 +77,7 @@ function start(route, handle) {
 	}
 	
 	/*var servidor = */http.createServer(onRequest).listen(port,ipaddr);
-	console.log("server has started at: "+ipaddr+":"+port);
+	//console.log("server has started at: "+ipaddr+":"+port);
 	
 	/*servidor.on('error', function(e){
 		console.log("Server Caught the error: "+e);
