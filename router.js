@@ -1,11 +1,11 @@
 function route(handle, operation, a, b, resultat, err) {
 	if (typeof handle[operation] === 'function') {
 		
-		/*var routing = */handle[operation](
+		handle[operation](
 							a,
 							b,
-							function(res){
-								if(isNaN(res)){
+							function(error, res){
+								if(error){
 									var error = {
 											errorCode: 400,
 											errorContent: {
@@ -31,10 +31,6 @@ function route(handle, operation, a, b, resultat, err) {
 		err(error);
 		
 	}
-		
-		/*routing.on('error', function(e){
-			console.log("Routing Caught the error: " + e);
-		});*/
 }
 
 exports.route = route;
