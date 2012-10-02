@@ -19,7 +19,7 @@ var dividir = function (a, b, res){
 };
 
 var checkNumbersAndRespond = function (result, res){
-	if(isNaN(result)){
+	if(isNaN(result) || result === undefined){
 		var error = {
 				errorCode: 400,
 				errorContent: {
