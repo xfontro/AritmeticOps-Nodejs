@@ -1,6 +1,5 @@
 function route(handle, operation, a, b, resultat) {
 	if (typeof handle[operation] === 'function') {
-		
 		handle[operation](
 							a,
 							b,
@@ -8,8 +7,7 @@ function route(handle, operation, a, b, resultat) {
 								if(error){
 									resultat(error);
 								} else{
-									//console.log("The result is: "+res);
-									resultat(null ,{"resultat" : res});
+									resultat(null, res);
 								}
 							}
 				);

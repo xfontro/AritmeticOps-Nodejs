@@ -2,11 +2,12 @@ var http = require("http");
 
 var req_options = {
 	host: '192.168.7.13',
-	//host: '127.0.0.1',
+	//host: 'localhost',
 	port: '8080',
     method: 'POST',
     //path: '/sumar?op1=2&op2=4', //Exemple per a GET.
-    path: 'http://aritmeticops-nodetestingsf.rhcloud.com/sumar', //Exemple per a POST.
+    path: 'http://aritmeticops-nodetestingsf.rhcloud.com/dividir', //Exemple per a POST.
+    //path: '/dividir',
     headers: {
     	Host: "aritmeticops-nodetestingsf.rhcloud.com"
     }
@@ -14,8 +15,8 @@ var req_options = {
 
 
 var nums = {
-	op1: 7,
-	op2: 15
+	op1: 4,
+	op2: 16
 };
 
 var data = JSON.stringify(nums);
@@ -28,12 +29,12 @@ if(req_options.method === 'POST'){
 	
 	var req = http.request(req_options, function(response){
 		var res_data='';
-		
 		response.on('data', function(chunk){
 			res_data +=chunk;
 		});
 		response.on('end', function(){
 			console.log("El resultat es: " + JSON.parse(res_data).resultat);
+			console.log("JSON: "+res_data);
 		});
 	});
 	
@@ -43,6 +44,7 @@ if(req_options.method === 'POST'){
 	});
 	
 	req.write(data);
+	//console.log("The data i pass: "+data);
 	req.end();
 	
 } else if(req_options.method === 'GET'){
