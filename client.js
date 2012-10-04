@@ -7,7 +7,7 @@ var req_options = {
     method: 'POST',
     //path: '/sumar?op1=2&op2=4', //Exemple per a GET.
     path: 'http://aritmeticops-nodetestingsf.rhcloud.com/dividir', //Exemple per a POST.
-    //path: '/dividir',
+    //path: '/sumar',
     headers: {
     	Host: "aritmeticops-nodetestingsf.rhcloud.com"
     }

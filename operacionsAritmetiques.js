@@ -44,3 +44,4 @@ exports.sumar = sumar;
 exports.restar = restar;
 exports.multiplicar = multiplicar;
 exports.dividir = dividir;
+exports.arrel = arrel;
