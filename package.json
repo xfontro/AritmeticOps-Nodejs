@@ -1,22 +1,18 @@
 {
-  "name": "OpenShift-Sample-App",
-  "version": "1.0.0",
-  "description": "OpenShift Sample Application",
+  "name": "Aritmetic-Sample-App",
+  "version": "0.0.3",
+  "description": "Aritmetic Sample Application",
   "keywords": [
     "OpenShift",
     "Node.js",
     "application",
-    "openshift"
+    "openshift",
+    "aritmetic"
   ],
   "author": {
-    "name": "OpenShift",
+    "name": "Xavier F",
     "email": "ramr@example.org",
     "url":  "http://openshift.redhat.com/"
-  },
-  "homepage": "http://openshift.redhat.com/",
-  "repository": {
-    "type": "git",
-    "url": "https://gitub.com/openshift/crankcase"
   },
   "engines": {
     "node": ">= 0.6.0",

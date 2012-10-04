@@ -9,8 +9,7 @@ var ipaddr  = process.env.OPENSHIFT_INTERNAL_IP || "127.0.0.1",
 function start(route, handle) {
 	var app = express();
 	app.use(express.bodyParser());
-	
-	app.post('/*', function(request, response){
+	app.post('/*', function(request, response, next){
 		var pathname = request.path;
 		
 		route(
