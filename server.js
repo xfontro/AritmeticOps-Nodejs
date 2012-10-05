@@ -60,6 +60,5 @@ app.all("/*", function (request, response){
 });
 
 app.listen(port,ipaddr);
-
 console.log("Server has started at: "+ipaddr+":"+port);
 
