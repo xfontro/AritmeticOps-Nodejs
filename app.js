@@ -5,15 +5,15 @@ var	url 	= require("url"),
 	args = require("commander"),
 	cluster = require("cluster");
 
-//var ipaddr  = process.env.VMC_APP_PORT || process.env.OPENSHIFT_INTERNAL_IP || "192.168.7.163",
-var		port    = process.env.OPENSHIFT_INTERNAL_PORT || "8080";
+var ipaddr  = process.env.OPENSHIFT_INTERNAL_IP || "192.168.7.163",
+		port    = process.env.OPENSHIFT_INTERNAL_PORT ;//|| "8080";
 
 var app = express(),
 	handle = {};
 
 args
 	.version('0.1')
-	.option('-p, --port [number]', 'client port', 8080)
+	//.option('-p, --port [number]', 'client port', 8080)
 	.option('-f, --folder [folderpath]', 'root folder path', './' )
 	.option('-c, --cluster', 'cluster of processes')
 	.parse(process.argv);
@@ -92,6 +92,6 @@ if(cluster.isMaster) {
 		response.json(404, {error:'404 Not Found'});
 	});
 
-	app.listen(port);//args.port,ipaddr);
-	console.log("Server has started at port: "+port);
+	app.listen(port,ipaddr);//args.port,ipaddr);
+	console.log("Server has started at: "+ipaddr+":"+port);
 }
