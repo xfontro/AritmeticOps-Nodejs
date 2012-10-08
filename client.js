@@ -1,15 +1,15 @@
 var http = require("http");
 
 var req_options = {
-	//host: '192.168.7.13',
-	host: 'localhost',
+	host: '192.168.7.13',
+	//host: 'localhost',
 	port: '8080',
     method: 'POST',
     //path: '/sumar?op1=2&op2=4', //Exemple per a GET.
-    //path: 'http://aritmeticops-nodetestingsf.rhcloud.com/dividir', //Exemple per a POST.
-    path: '/sumar',
+    path: 'http://aritmeticops-nodetestingsf.rhcloud.com/sumar', //Exemple per a POST.
+    //path: '/surar',
     headers: {
-    	//Host: "aritmeticops-nodetestingsf.rhcloud.com"
+    	Host: "aritmeticops-nodetestingsf.rhcloud.com"
     }
   };
 

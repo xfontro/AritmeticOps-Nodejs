@@ -18,7 +18,7 @@ args
 	.option('-c, --cluster', 'cluster of processes')
 	.parse(process.argv);
 
-if(cluster.isMaster) {
+/*if(cluster.isMaster) {
 	//console.log('Binding to port ', args.port);
 	console.log('Folder path: ', args.folder);
 	console.log('Processor: ' + require('os').cpus()[0].model);
@@ -32,7 +32,7 @@ if(cluster.isMaster) {
 		console.log('Cluster: no cluster');
 		cluster.fork();
 	}
-} else {
+} else {*/
 			
 	app.configure(function (){
 		app.use(express.bodyParser());
@@ -94,4 +94,4 @@ if(cluster.isMaster) {
 
 	app.listen(port,ipaddr);//args.port,ipaddr);
 	console.log("Server has started at: "+ipaddr+":"+port);
-}
+//}
