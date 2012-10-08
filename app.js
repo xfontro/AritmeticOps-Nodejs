@@ -5,8 +5,8 @@ var	url 	= require("url"),
 	args = require("commander"),
 	cluster = require("cluster");
 
-var ipaddr  = process.env.OPENSHIFT_INTERNAL_IP || "127.0.0.1", //"192.168.7.171",
-	port    = process.env.OPENSHIFT_INTERNAL_PORT || "8080";
+//var ipaddr  = process.env.VMC_APP_PORT || process.env.OPENSHIFT_INTERNAL_IP || "192.168.7.163",
+var		port    = process.env.VMC_APP_PORT || process.env.OPENSHIFT_INTERNAL_PORT || "8080";
 
 var app = express(),
 	handle = {};
@@ -44,7 +44,7 @@ if(cluster.isMaster) {
 						}else {
 							response.json(200, {resultat: resultat});
 						}
-	})});
+	});});
 
 	app.post("/restar", function(request, response){operacionsAritmetiques.restar(request.body.op1, request.body.op2, function(error, resultat){
 						if(error){
@@ -52,7 +52,7 @@ if(cluster.isMaster) {
 						}else {
 							response.json(200, {resultat: resultat});
 						}
-	})});
+	});});
 
 	app.post("/multiplicar", function(request, response){operacionsAritmetiques.multiplicar(request.body.op1, request.body.op2, function(error, resultat){
 						if(error){
@@ -60,7 +60,7 @@ if(cluster.isMaster) {
 						}else {
 							response.json(200, {resultat: resultat});
 						}
-	})});
+	});});
 
 	app.post("/dividir", function(request, response){operacionsAritmetiques.dividir(request.body.op1, request.body.op2, function(error, resultat){
 						if(error){
@@ -68,7 +68,7 @@ if(cluster.isMaster) {
 						}else {
 							response.json(200, {resultat: resultat});
 						}
-	})});
+	});});
 
 	app.get("/:operation", function (request, response, next){
 		var op = handle[request.params.operation];
@@ -92,6 +92,6 @@ if(cluster.isMaster) {
 		response.json(404, {error:'404 Not Found'});
 	});
 
-	app.listen(args.port,ipaddr);
+	app.listen(port);//args.port,ipaddr);
 	console.log("Server has started at: "+ipaddr+":"+port);
 }
