@@ -93,5 +93,5 @@ if(cluster.isMaster) {
 	});
 
 	app.listen(port);//args.port,ipaddr);
-	console.log("Server has started at: "+ipaddr+":"+port);
+	console.log("Server has started at port: "+port);
 }
