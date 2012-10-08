@@ -6,7 +6,7 @@ var	url 	= require("url"),
 	cluster = require("cluster");
 
 //var ipaddr  = process.env.VMC_APP_PORT || process.env.OPENSHIFT_INTERNAL_IP || "192.168.7.163",
-var		port    = process.env.VMC_APP_PORT || process.env.OPENSHIFT_INTERNAL_PORT || "8080";
+var		port    = process.env.OPENSHIFT_INTERNAL_PORT || "8080";
 
 var app = express(),
 	handle = {};
@@ -19,7 +19,7 @@ args
 	.parse(process.argv);
 
 if(cluster.isMaster) {
-	console.log('Binding to port ', args.port);
+	//console.log('Binding to port ', args.port);
 	console.log('Folder path: ', args.folder);
 	console.log('Processor: ' + require('os').cpus()[0].model);
 
