@@ -3,7 +3,6 @@
   "version": "0.0.3",
   "description": "Aritmetic Sample Application",
   "keywords": [
-    "OpenShift",
     "Node.js",
     "application",
     "openshift",
@@ -28,7 +27,7 @@
   "bundleDependencies": [],
   
   "scripts": {  
-     "start": "node ./app.js -c"
+     "start": "node ./app.js"
   },
   "private": true
 
