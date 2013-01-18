@@ -1,32 +1,32 @@
 var sumar = function (a, b, res){
-	var result = a+b;
+	var result = a + b;
 	checkNumbersAndRespond(result, res);
 };
 
 var restar = function (a, b, res) {
-	var result = a-b;
+	var result = a - b;
 	checkNumbersAndRespond(result, res);
 };
 
 var multiplicar = function (a, b, res) {
-	var result = a*b;
+	var result = a * b;
 	checkNumbersAndRespond(result, res);
 };
 
-var dividir = function (a, b, res){
-	var result = a/b;
+var dividir = function (a, b, res) {
+	var result = a / b;
 	checkNumbersAndRespond(result, res);
 };
 
-var arrel = function (a, b, res){
+var arrel = function (a, b, res) {
 	var result = 0;
-	for(var i=0;i<1000;i++){
+	for (var i = 0;i < 1000;i++) {
 		result += sqrt(a) * sqrt(b); 
 	}
 };
 
-var checkNumbersAndRespond = function (result, res){
-	if(isNaN(result) || result === undefined){
+var checkNumbersAndRespond = function (result, res) {
+	if (isNaN(result) || result === undefined) {
 		var error = {
 				errorCode: 400,
 				errorContent: {
@@ -35,7 +35,7 @@ var checkNumbersAndRespond = function (result, res){
 				errorDescription: '400 Bad Request'
 		};
 		res(error);
-	} else{
+	} else {
 		res(null, result);
 	}
 };
